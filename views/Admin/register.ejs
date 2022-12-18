@@ -1,0 +1,50 @@
+<%- include('../front/header.ejs') %>
+
+
+<section class="login-wrap mtb-40">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="login-box">
+                    <h1>Administrator Login</h1>
+                     <% if(message.length > 0){ %>
+                            <div class="alert alert-danger">
+                                <%= message %>
+                            </div>
+                        <% } %>
+                    <form action="/register" method="post">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" placeholder="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control " id="myinput" placeholder="Password">
+                            
+                        </div>
+                        <input type="checkbox" onclick="myfunction()">show password
+                        <div class="form-group">
+                            <input type="password" name="confirmpassword" class="form-control" id="myinput" placeholder="confirmpassword" >
+                            
+
+                            
+
+                        </div>
+                        <input type="checkbox" onclick="myfunction()">show password
+                        <div class="form-group">
+                         <button type="submit" class="btn btn-success" >save</button>
+                        </div>
+                    </form>
+                </div>         
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- npm install connect-flash    
+    npm install express-session   
+msg show ke liye -->
+
+<%- include('../front/footer.ejs') %>

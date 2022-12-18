@@ -1,0 +1,34 @@
+<%- include('../front/header.ejs') %>
+<!-- <h1>admin dashbord</h1> -->
+
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    
+                  <%- include('./sidebar.ejs') %>
+                    <!-- <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/admin/dashboard" class="active">Dashboard</a></li>
+                            <li><a href="/admin/blogs">Blogs</a></li>
+                        
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>    -->
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <h1>Dashboard welcome <%= n %></h1>
+                        <h1> <%= e %></h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<%- include('../front/footer.ejs') %>

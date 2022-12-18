@@ -1,0 +1,70 @@
+<%- include('../../front/header.ejs') %>
+
+<section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-3">
+                    
+                  <%- include('../sidebar.ejs') %>
+                    <!-- <div class="dash-left">
+                        <ul>
+                            <li class="active"><a href="/admin/dashboard" class="active">Dashboard</a></li>
+                            <li><a href="/admin/blogs">Blogs</a></li>
+                        
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>    -->
+                </div>
+                <div class="col-md-9">
+                    <div class="dash-right">
+                        <div class="dash-header">
+                            <div class="dash-title">
+                                <h1>contact</h1>
+                            </div>
+                            <!-- <div class="dash-nav">
+                                <a href="/admin/addblogs" class="btn btn-success">Add blog</a>
+                            </div> -->
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>#ID</th>
+                                
+                                <th>name</th>
+                                <th>email</th>
+                                <th>phone</th>
+                                <!-- <th>Posted On</th> -->
+                                <th>messege</th>
+                                <th>Action</th>
+                            </tr> 
+                            <% viewdata.forEach((item)=>{ %>
+                                <tr> 
+                                    <!-- <td></td> -->
+                                    <td><%= item._id %></td>
+                                    <td><%= item.name %></td>
+                                    <td><%= item.email %></td>
+                                    <td><%= item.phone %></td>
+                                    <td><%= item.message %></td>
+                                  
+                                  
+
+                                    <!-- id show ke liye anchor tag me -->
+                                    <td> <a href="/admin/blog_view/<%= item._id %>" class=" btn btn-primary bi bi-eye"></a>
+                                        <a href="/admin/blog_edit/<%= item._id %>" class="btn btn-info bi bi-pencil"></a>
+                                        <a href="/admin/blog_delete/<%= item._id %>" class="btn btn-danger  bi bi-trash"></a>
+                                    </td>
+                                </tr>
+                               
+
+                           <% }) %>
+                        
+                           
+                        </table>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../../front/footer.ejs') %>
