@@ -9,7 +9,7 @@ class UserController {
 
 
     static AdminResgister = async(req,res)=>{
-        res.render('admin/register',{message : req.flash('error')})
+        res.render('Admin/register',{message : req.flash('error')})
     }
 
     static Resgister = async(req,res)=>{
