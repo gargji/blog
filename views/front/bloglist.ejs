@@ -10,8 +10,8 @@
               <img src="  <%= item.image.url %>" alt="blog1" width="350" height="237" />
               <h3>  <%= item.title %></h3>
               <p>by <span>ADMIN</span> on <span> <%= item.createdAt.toLocaleDateString() %></span></p>
-              <p>  <%= item.description.slice(0,120) %></p>
-              <a href="detail.html" class="btn btn-danger">Read more...</a>
+              <p class="text-justify">  <%= item.description.slice(0,120) %></p>
+              <a href="/blogdetail/<%= item.id %>" class="btn btn-danger">Read more...</a>
             </div>
           </div>
       <%  }) %>

@@ -5,7 +5,7 @@ class CategoryController {
     static CategoryDisplay =async(req,res)=>{
         const data=await CategoryModel.find()
         // console.log(data)
-        res.render('admin/Category/CategoryDisplay',{d:data})
+        res.render('Admin/Category/CategoryDisplay',{d:data})
     }
     static CreateCategory= async(req,res)=>{
         res.render('Admin/Category/CreateCategory')

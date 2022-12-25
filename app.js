@@ -13,6 +13,11 @@ app.use(cookieParser())
 const web =require("./routes/web")
 const cloudinary = require('cloudinary');
 
+
+const cors = require("cors");
+app.use(cors());
+
+
 const api=require('./routes/api')
 // const bcrypt = require('bcrypt');
 
