@@ -1,4 +1,5 @@
 const UserModel = require('../../models/User')
+const ContactModel =require('../../models/contact')
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
  
@@ -10,6 +11,7 @@ var jwt = require('jsonwebtoken');
         // console.log(req.body)
         // input wale name hai ye jo form me hai inhe variable me store krlia
         const{name,email,password,confirmpassword} = req.body; 
+        // console.log(req.body)
         const user = await UserModel.findOne({email:email})
         if(user){
             res.send({ status: "failed", message: "ᴛʜɪꜱ ᴇᴍᴀɪʟ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴇxɪᴛꜱ😓" });
@@ -61,7 +63,7 @@ var jwt = require('jsonwebtoken');
                     var token = jwt.sign({ userId: user._id }, 'vishal12345');
                     // console.log(token)
                     res.cookie('token',token)
-                    res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token  });
+                    res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token ,user });
                 }else{
                     res.send({ status: "failed", message: "email or password not vaild  " });
                    }
@@ -81,7 +83,33 @@ var jwt = require('jsonwebtoken');
          }
          // res.render('admin/register',{message : req.flash('error')})
      }
- 
+    
+    
+     static contact =async(req,res)=>{
+        try{ const data = await ContactModel.find()
+        // console.log(data)
+        res.status(200).json({
+            success: true,
+            data
+        })
+           
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    static showusers =async(req,res)=>{
+        try{ const data = await UserModel.find()
+        // console.log(data)
+        res.status(200).json({
+            success: true,
+            data
+        })
+           
+        }catch(err){
+            console.log(err)
+        }
+    }
      static logout =async(req,res)=>{
          try{
              res.clearCookie('token')
@@ -91,5 +119,34 @@ var jwt = require('jsonwebtoken');
              console.log(err)
          }
      }
+
+
+     static contactinsert = async (req,res) => {
+        // console.log(req.body)
+        const{name,email,password,confirmpassword} = req.body; 
+    try {
+        if(name && email && phone && message){
+        const result = new ContactModel({
+         
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            message: req.body.message,
+            
+        
+        })
+        await result.save()
+        res.send({ status: 201, message: "contact successfully" });
+    }else{
+        res.send({ status: 401, message: "all filed require" });
+    }
+        // res.redirect('/admin/dashboard')  // route ka url dena h
+
+
+    
+    } catch (err) {
+        console.log(err)
+    }
+}
   }
   module.exports=UsersController

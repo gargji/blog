@@ -6,14 +6,24 @@ const router =express.Router()
 
 
 router.get('/blogs',BlogController.Blogs)
-router.post('/bloginsert',BlogController.insertblog)
 router.get('/blogview/:id',BlogController.Blogview)
-router.post('/blogupdate/:id',BlogController.Blogupdate)
+
 
 
 // userscontroller
 
 router.post('/register',UsersController.Resgister)
 router.post('/verify_login',UsersController.verify_login)
+
 router.get('/logout',UsersController.logout)
+
+
+// admin
+
+router.get('/contact',UsersController.contact)
+router.get('/showusers',UsersController.showusers)
+router.post("/contactinsert",UsersController.contactinsert)
+router.post('/bloginsert',BlogController.insertblog)
+router.post('/blogupdate/:id',BlogController.Blogupdate)
+router.get("/blog_delete/:id",BlogController.blogdelete)
 module.exports=router

@@ -11,7 +11,8 @@ class BlogController {
 
     static Blogs = async (req, res) => {
         try {
-            const blogs = await BlogModel.find()
+            const blogs = await BlogModel.find().sort({_id:-1})
+            // console.log(blogs)
             res.status(200).json({
                 success: true,
                 blogs
@@ -108,6 +109,30 @@ class BlogController {
             console.log(err)
         }
 
+    }
+    static blogdelete = async (req, res) => {
+
+
+        // console.log(req.params.id)
+        try {
+
+            // ye image delete ke liye
+            const user =await BlogModel.findById(req.params.id)
+            const image_id=user.image.public_id;
+            console.log(image_id)
+            await cloudinary.uploader.destroy(image_id)
+
+
+
+
+
+            const data = await BlogModel.findByIdAndDelete(req.params.id)
+            res.send({ status: 201, message: "delete successfully" });
+            // res.redirect('/admin/blogs')
+
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
 
