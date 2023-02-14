@@ -5,6 +5,7 @@ const router =express.Router()
 
 
 
+
 router.get('/blogs',BlogController.Blogs)
 router.get('/blogview/:id',BlogController.Blogview)
 

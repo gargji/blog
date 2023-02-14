@@ -63,7 +63,15 @@ var jwt = require('jsonwebtoken');
                     var token = jwt.sign({ userId: user._id }, 'vishal12345');
                     // console.log(token)
                     res.cookie('token',token)
-                    res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token ,user });
+
+
+                    res.status(200
+                    ).json({
+                        success: "success",
+                        token,
+                        user,
+                    })
+                    // res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token});
                 }else{
                     res.send({ status: "failed", message: "email or password not vaild  " });
                    }
@@ -86,6 +94,7 @@ var jwt = require('jsonwebtoken');
     
     
      static contact =async(req,res)=>{
+        // console.log(req.body)
         try{ const data = await ContactModel.find()
         // console.log(data)
         res.status(200).json({
