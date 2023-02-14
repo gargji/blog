@@ -63,7 +63,7 @@ var jwt = require('jsonwebtoken');
                     var token = jwt.sign({ userId: user._id }, 'vishal12345');
                     // console.log(token)
                     res.cookie('token',token)
-                    res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token ,user });
+                    res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token ,"user":user });
                 }else{
                     res.send({ status: "failed", message: "email or password not vaild  " });
                    }
