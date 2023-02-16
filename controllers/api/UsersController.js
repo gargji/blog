@@ -67,7 +67,7 @@ var jwt = require('jsonwebtoken');
 
                     res.status(200
                     ).json({
-                        success: "success",
+                        status: "success",
                         token,
                         user,
                     })
