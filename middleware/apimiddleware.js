@@ -17,7 +17,7 @@ if(!token){
 //    console.log(verify_token)
 const data=await UserModel.findOne({_id:verify_token.userId})
 console.log(data)
-res.send({ status: "success",data });
+res.send({ status: "success",data:data });
 
 }
 // console.log(token)
