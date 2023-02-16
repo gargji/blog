@@ -1,6 +1,8 @@
 const express =require('express')
+
 const BlogController = require('../controllers/api/BlogController')
 const UsersController = require('../controllers/api/UsersController')
+const CheckUserAuthapi = require('../middleware/apimiddleware')
 const router =express.Router()
 
 
@@ -15,11 +17,14 @@ router.get('/blogview/:id',BlogController.Blogview)
 
 router.post('/register',UsersController.Resgister)
 router.post('/verify_login',UsersController.verify_login)
+router.post('/profile',CheckUserAuthapi)
 
 router.get('/logout',UsersController.logout)
 
 
 // admin
+
+
 
 router.get('/contact',UsersController.contact)
 router.get('/showusers',UsersController.showusers)
