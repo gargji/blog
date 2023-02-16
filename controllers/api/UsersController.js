@@ -157,5 +157,8 @@ var jwt = require('jsonwebtoken');
         console.log(err)
     }
 }
+    static verify= async (req,res)=>{
+        
+    }
   }
   module.exports=UsersController
