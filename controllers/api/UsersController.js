@@ -65,12 +65,8 @@ var jwt = require('jsonwebtoken');
                     res.cookie('token',token)
 
 
-                    res.status(200
-                    ).json({
-                        status: "success",
-                        token,
-                        user,
-                    })
+
+                  res.send({ status: "success", message: "successfully log in ",token });
                   
                 }else{
                     res.send({ status: "failed", message: "email or password not vaild  " });
