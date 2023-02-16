@@ -2,7 +2,7 @@ var jwt = require('jsonwebtoken');
 const UserModel= require('../models/User')
 
 
-const CheckUserAuth = async(req,res,next)=>{
+const apimiddleware = async(req,res,next)=>{
     console.log(req.body)
 console.log(req.body.token)
 
@@ -22,6 +22,6 @@ res.status(200).json({
 })
 
 }
-console.log(token)
+// console.log(token)
 }
-module.exports=CheckUserAuth
+module.exports=apimiddleware
