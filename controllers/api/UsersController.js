@@ -71,7 +71,7 @@ var jwt = require('jsonwebtoken');
                         token,
                         user,
                     })
-                    // res.send({ status: "sucess", message: "login successfully with web token 😃🍻", "Token": token});
+                  
                 }else{
                     res.send({ status: "failed", message: "email or password not vaild  " });
                    }
