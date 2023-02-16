@@ -61,6 +61,49 @@ var jwt = require('jsonwebtoken');
             console.log(err)
         }
     }
+  
+  static verify_login = async(req,res)=>{
+
+
+        try{
+            const{email,password}=req.body
+            if(email && password){
+            //   console.log(password)
+               const user= await UserModel.findOne({email:email})
+            //    console.log(user.password)
+               if(user !=null){
+                const ismatched =await bcrypt.compare(password,user.password)
+                if((user.email) && ismatched){
+
+                    // token genrate
+                    var token = jwt.sign({ userId: user._id }, 'vishal12345');
+                    // console.log(token)
+                    res.cookie('token',token)
+
+
+
+                  res.send({ status: "success", message: "successfully log in ",token });
+                  
+                }else{
+                    res.send({ status: "failed", message: "email or password not vaild  " });
+                   }
+                }
+                else{
+                 req.flash('error','you are not registerd user')
+                return res.redirect('/login')
+ 
+ 
+                }
+             }else{
+                 res.send({ status: "failed", message: "all filed required😓" });
+ 
+             }
+         }catch(err){
+             console.log(err)
+         }
+         // res.render('admin/register',{message : req.flash('error')})
+     }
+    
 
     static showusers =async(req,res)=>{
         try{ const data = await UserModel.find()
