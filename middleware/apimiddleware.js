@@ -4,7 +4,7 @@ const UserModel= require('../models/User')
 
 const apimiddleware = async(req,res,next)=>{
     console.log(req.body)
-    res.send(req.body)
+    // res.send(req.body)
 console.log(req.body.token)
 
 const token =req.body.token;
@@ -19,7 +19,7 @@ const data=await UserModel.findOne({_id:verify_token.userId})
 console.log(data)
 res.status(200).json({
     success: true,
-    data
+    data:data
 })
 
 }

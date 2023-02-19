@@ -157,6 +157,52 @@ var jwt = require('jsonwebtoken');
         console.log(err)
     }
 }
+static profiledata =async(req,res)=>{
+   const data= req.data1
+//    console.log(data)
     
+    try{ 
+        // const data = await ContactModel.findById({_id:id})
+    // console.log(data)
+    res.status(200).json({
+        success: true,
+        data
+    })
+       
+    }catch(err){
+        console.log(err)
+    }
+}
+
+static contactdelete = async (req, res) => {
+
+
+    
+    try {
+
+        const data = await ContactModel.findByIdAndDelete(req.params.id)
+         
+        res.send({ status: 201, message: "contact delete successfully" });
+        // res.redirect('/admin/blogs')
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+static registerdelete = async (req, res) => {
+
+
+    
+    try {
+
+        const data = await UserModel.findByIdAndDelete(req.params.id)
+         
+        res.send({ status: 201, message: "contact delete successfully" });
+        // res.redirect('/admin/blogs')
+
+    } catch (err) {
+        console.log(err)
+    }
+}
   }
   module.exports=UsersController

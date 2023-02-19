@@ -22,7 +22,7 @@ class BlogController {
         }
     }
     static insertblog = async (req, res) => {
-        //     console.log(req.body)
+            // console.log(req.body)
         // console.log(req.files)
         const imagefile = req.files.image
         const image_upload = await cloudinary.uploader.upload(imagefile.tempFilePath, {
@@ -32,8 +32,8 @@ class BlogController {
         // console.log('data inserted')
         try {
             const result = new BlogModel({
-                title: req.body.Title,
-                description: req.body.Description,
+                title: req.body.title,
+                description: req.body.description,
                 // image:req.body.blog_image
                 // image:image_upload.secure_url
                 image: {
@@ -69,6 +69,7 @@ class BlogController {
     }
 
     static Blogupdate = async (req, res) => {
+        // console.log(req.body)
         try {
             const data = await BlogModel.findById(req.params.id)
             const imageID = data.image.public_id;
@@ -82,8 +83,8 @@ class BlogController {
                 width: 400
             })
             const update = await BlogModel.findByIdAndUpdate(req.params.id,{
-                title: req.body.Title,
-                description: req.body.Description,
+                title: req.body.title,
+                description: req.body.description,
                 // image:req.body.blog_image
                 // image:image_upload.secure_url
                 image: {
@@ -119,7 +120,7 @@ class BlogController {
             // ye image delete ke liye
             const user =await BlogModel.findById(req.params.id)
             const image_id=user.image.public_id;
-            console.log(image_id)
+            // console.log(image_id)
             await cloudinary.uploader.destroy(image_id)
 
 
@@ -128,7 +129,7 @@ class BlogController {
 
             const data = await BlogModel.findByIdAndDelete(req.params.id)
             res.send({ status: 201, message: "delete successfully" });
-            // res.redirect('/admin/blogs')
+           
 
         } catch (err) {
             console.log(err)
