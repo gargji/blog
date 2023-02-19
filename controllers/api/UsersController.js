@@ -202,5 +202,52 @@ static registerdelete = async (req, res) => {
         console.log(err)
     }
 }
+
+static showuserview =async(req,res)=>{
+    try{ const data = await UserModel.findById(req.params.id)
+    // console.log(data)
+    res.status(200).json({
+        success: true,
+        data
+    })
+       
+    }catch(err){
+        console.log(err)
+    }
+}
+static userupdate = async (req, res) => {
+    // console.log(req.body)
+    try {
+      
+        
+       
+
+      
+        const update = await UserModel.findByIdAndUpdate(req.params.id,{
+            name: req.body.name,
+            email: req.body.email,
+            // image:req.body.blog_image
+            // image:image_upload.secure_url
+          
+            },)
+            
+
+        
+        await update.save()
+        res
+            .status(201)
+            .send({
+                status: "success",
+               
+            })
+        // res.status(200).json({
+        //     success: true,
+        //     blogview
+        // })
+    } catch (err) {
+        console.log(err)
+    }
+
+}
   }
   module.exports=UsersController
