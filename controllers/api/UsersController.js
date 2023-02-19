@@ -46,7 +46,23 @@ var jwt = require('jsonwebtoken');
 
      
     }
-    static verify_login = async(req,res)=>{
+    
+    
+     static contact =async(req,res)=>{
+        // console.log(req.body)
+        try{ const data = await ContactModel.find()
+        // console.log(data)
+        res.status(200).json({
+            success: true,
+            data
+        })
+           
+        }catch(err){
+            console.log(err)
+        }
+    }
+  
+  static verify_login = async(req,res)=>{
 
 
         try{
@@ -65,12 +81,8 @@ var jwt = require('jsonwebtoken');
                     res.cookie('token',token)
 
 
-                    res.status(200
-                    ).json({
-                        status: "success",
-                        token,
-                        user,
-                    })
+
+                  res.send({ status: "success", message: "successfully log in ",token });
                   
                 }else{
                     res.send({ status: "failed", message: "email or password not vaild  " });
@@ -92,20 +104,6 @@ var jwt = require('jsonwebtoken');
          // res.render('admin/register',{message : req.flash('error')})
      }
     
-    
-     static contact =async(req,res)=>{
-        // console.log(req.body)
-        try{ const data = await ContactModel.find()
-        // console.log(data)
-        res.status(200).json({
-            success: true,
-            data
-        })
-           
-        }catch(err){
-            console.log(err)
-        }
-    }
 
     static showusers =async(req,res)=>{
         try{ const data = await UserModel.find()
