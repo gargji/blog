@@ -130,7 +130,7 @@ var jwt = require('jsonwebtoken');
 
      static contactinsert = async (req,res) => {
         // console.log(req.body)
-        const{name,email,password,confirmpassword} = req.body; 
+        const{name,email,phone,message} = req.body; 
     try {
         if(name && email && phone && message){
         const result = new ContactModel({
